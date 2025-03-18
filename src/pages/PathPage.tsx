@@ -8,6 +8,11 @@ import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import CourseCard, { CourseCardProps } from '@/components/CourseCard';
 
+// Define an extended course type that includes progress
+interface CourseWithProgress extends CourseCardProps {
+  progress: number;
+}
+
 // Mock path data
 const pathData = {
   id: '1',
@@ -46,8 +51,9 @@ const pathData = {
           duration: '6h',
           lessons: 24,
           students: 4521,
-          level: 'iniciante',
-          progress: 100
+          level: 'iniciante' as const,
+          progress: 100,
+          featured: false
         },
         {
           id: '3',
@@ -58,10 +64,11 @@ const pathData = {
           duration: '8h',
           lessons: 32,
           students: 3102,
-          level: 'intermediário',
-          progress: 75
+          level: 'intermediário' as const,
+          progress: 75,
+          featured: false
         }
-      ]
+      ] as CourseWithProgress[]
     },
     {
       id: 'm2',
@@ -77,8 +84,9 @@ const pathData = {
           duration: '12h',
           lessons: 48,
           students: 2354,
-          level: 'intermediário',
-          progress: 30
+          level: 'intermediário' as const,
+          progress: 30,
+          featured: true
         },
         {
           id: '5',
@@ -89,10 +97,11 @@ const pathData = {
           duration: '10h',
           lessons: 40,
           students: 1286,
-          level: 'avançado',
-          progress: 0
+          level: 'avançado' as const,
+          progress: 0,
+          featured: false
         }
-      ]
+      ] as CourseWithProgress[]
     },
     {
       id: 'm3',
@@ -108,8 +117,9 @@ const pathData = {
           duration: '15h',
           lessons: 60,
           students: 1856,
-          level: 'avançado',
-          progress: 0
+          level: 'avançado' as const,
+          progress: 0,
+          featured: true
         },
         {
           id: '8',
@@ -120,10 +130,11 @@ const pathData = {
           duration: '11h',
           lessons: 44,
           students: 1543,
-          level: 'avançado',
-          progress: 0
+          level: 'avançado' as const,
+          progress: 0,
+          featured: false
         }
-      ]
+      ] as CourseWithProgress[]
     }
   ]
 };
@@ -141,7 +152,7 @@ const PathPage = () => {
   }, []);
 
   // Calculate total progress
-  const calculateTotalProgressForSection = (courses: CourseCardProps[]) => {
+  const calculateTotalProgressForSection = (courses: CourseWithProgress[]) => {
     const total = courses.reduce((acc, course) => acc + course.progress, 0);
     return Math.round(total / courses.length);
   };

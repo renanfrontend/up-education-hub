@@ -24,7 +24,7 @@ const liveData = {
   time: '20:00',
   duration: '1h30',
   attendees: 256,
-  status: 'live',
+  status: 'live' as const,
   topics: [
     'Fundamentos de REST e APIs',
     'Configuração do ambiente com Node.js e Express',
@@ -53,7 +53,7 @@ const liveData = {
       time: '19:00',
       duration: '1h30',
       attendees: 127,
-      status: 'upcoming'
+      status: 'upcoming' as const
     },
     {
       id: '8',
@@ -65,7 +65,7 @@ const liveData = {
       time: '20:00',
       duration: '1h30',
       attendees: 98,
-      status: 'upcoming'
+      status: 'upcoming' as const
     }
   ],
   comments: [

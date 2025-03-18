@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import { Search as MagnifyingGlassIcon } from 'lucide-react';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
